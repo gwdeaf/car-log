@@ -357,9 +357,8 @@ function home(){
   // 오늘 날짜의 예약만 홈 화면 맨 위에 보여 줍니다
   const todayRes=RES.filter(r=>r.date===today);
   const todayHtml = todayRes.length ? `<div class="card" style="border-top:5px solid #7239d8"><b style="font-size:calc(17px * var(--k))">📅 오늘 예약 (${todayRes.length}건)</b>`+
-    todayRes.map(r=>`<div class="rec" style="margin-top:10px"><div class="l1">${esc(r.time||'시간 미정')} · ${esc(r.car)}</div>`+
-    `<div class="l2">${esc(r.driver)} · ${esc(r.dest)} · ${esc(r.purpose)} · ${esc(r.people)}명</div>`+
-    `<div class="hbtns" style="margin-top:8px"><button class="btn-save" onclick="resStart('${r.id}')">🚀 이 예약으로 출발</button></div></div>`).join("")+`</div>` : "";
+    todayRes.map(r=>`<div class="row" style="margin-top:10px;gap:8px"><div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:calc(15px * var(--k))"><b class="bl">${esc(r.time||'시간 미정')} · ${esc(r.car)}</b> · ${esc(r.driver)} · ${esc(r.dest)} · ${esc(r.purpose)} · ${esc(r.people)}명</div>`+
+    `<button class="btn-save" style="flex:0 0 auto" onclick="resStart('${r.id}')">출발</button></div>`).join("")+`</div>` : "";
   $("#app").innerHTML = `
   <div class="head"><h1>차량<span>운행</span>일지</h1>
     <div class="right"><button class="pill" onclick="changeDriver()">👤 ${driver}</button></div></div>
@@ -438,9 +437,8 @@ async function resLoad(){
 }
 function resRender(){
   const carOpts = CARS.map(c=>`<option>${esc(c.n)}</option>`).join("");
-  const list = RES.map(r=>`<div class="rec"><div class="l1">${esc(r.date)} ${esc(r.time)} · ${esc(r.car)}</div>`+
-    `<div class="l2">${esc(r.driver)} · ${esc(r.dest)} · ${esc(r.purpose)} · ${esc(r.people)}명</div>`+
-    `<div class="hbtns" style="margin-top:8px"><button class="btn-save" onclick="resStart('${r.id}')">🚀 이 예약으로 출발</button><button class="addbtn danger" onclick="resCancel('${r.id}')">취소</button></div></div>`).join("")
+  const list = RES.map(r=>`<div class="row" style="margin-top:10px;gap:8px"><div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:calc(15px * var(--k))"><b class="bl">${esc(r.date)} ${esc(r.time||'시간 미정')} · ${esc(r.car)}</b> · ${esc(r.driver)} · ${esc(r.dest)} · ${esc(r.purpose)} · ${esc(r.people)}명</div>`+
+    `<div class="hbtns" style="flex:0 0 auto"><button class="btn-save" onclick="resStart('${r.id}')">출발</button><button class="addbtn danger" onclick="resCancel('${r.id}')">취소</button></div></div>`).join("")
     || `<div class="empty">예약이 없습니다</div>`;
   $("#app").innerHTML = `<div class="big"><button class="back" onclick="goHome()">← 차량 선택</button>
   <div class="card"><h2>📅 예약 목록</h2><div class="lbl">예약한 운행에서 🚀 출발을 누르면 행선지와 목적이 자동으로 채워지고, 도착 화면에도 그대로 옮겨집니다.</div><div style="margin-top:10px">${list}</div></div>
