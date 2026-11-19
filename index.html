@@ -619,7 +619,7 @@ function adminView(){
   if(!adminDraft) adminDraft = ALLCFG ? {cars:ALLCFG.cars.map(c=>({...c})), drivers:ALLCFG.drivers.map(x=>({...x}))} : {cars:CARS.map(c=>({n:c.n,p:c.p||"",d:c.d||"",g:c.g||10,u:true})), drivers:DRIVERS.map(n=>({n,u:true}))};
   const tabs=[["log","📋 운행일지"],["print","🖨 일지 인쇄"],["maint","🔧 정비기록"],["cfg","🚗 차량·운전자"],["pw","🔑 비밀번호"],["faq","❓ 도움말"]];
   const body = adminTab==="log" ? adminLogView() : adminTab==="print" ? adminPrintView() : adminTab==="maint" ? adminMaintView() : adminTab==="pw" ? adminPwView() : adminTab==="faq" ? adminFaqView() : adminCfgView();
-  $("#app").innerHTML = `<div class="topbar"><button class="back" onclick="goHome()">← 돌아가기</button><button class="back" onclick="copyStaffLink()">🔗 직원용 링크 복사</button><button class="back" onclick="toggleFull()">⛶ 전체화면</button></div>
+  $("#app").innerHTML = `<div class="topbar"><button class="back" onclick="goHome()">← 돌아가기</button><button class="back" onclick="toggleFull()">⛶ 전체화면</button></div>
   <div class="head"><h1>관리자<span>화면</span></h1></div>
   <div class="adm"><nav class="side">${tabs.map(([k,l])=>`<button class="${adminTab===k?'on':''}" onclick="adminGo('${k}')">${l}</button>`).join("")}</nav>
   <section class="cont">${body}</section></div>
