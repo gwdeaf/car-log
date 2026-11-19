@@ -354,6 +354,12 @@ function changeDriver(){ driver=null; render(); }
 /* ---------- 메인 ---------- */
 function home(){
   const now=new Date(), days=["일","월","화","수","목","금","토"], today=dStr(now);
+  // 오늘 날짜의 예약만 홈 화면 맨 위에 보여 줍니다
+  const todayRes=RES.filter(r=>r.date===today);
+  const todayHtml = todayRes.length ? `<div class="card" style="border-top:5px solid #7239d8"><b style="font-size:calc(17px * var(--k))">📅 오늘 예약 (${todayRes.length}건)</b>`+
+    todayRes.map(r=>`<div class="rec" style="margin-top:10px"><div class="l1">${esc(r.time||'시간 미정')} · ${esc(r.car)}</div>`+
+    `<div class="l2">${esc(r.driver)} · ${esc(r.dest)} · ${esc(r.purpose)} · ${esc(r.people)}명</div>`+
+    `<div class="hbtns" style="margin-top:8px"><button class="btn-save" onclick="resStart('${r.id}')">🚀 이 예약으로 출발</button></div></div>`).join("")+`</div>` : "";
   $("#app").innerHTML = `
   <div class="head"><h1>차량<span>운행</span>일지</h1>
     <div class="right"><button class="pill" onclick="changeDriver()">👤 ${driver}</button></div></div>
@@ -365,6 +371,7 @@ function home(){
   <details class="gsub"><summary><b>2. 출발 기록을 안 했을 때</b> <i>▾</i></summary><p>도착할 때 차량 버튼을 누르고 🚀 출발을 먼저 누르세요. 도착 화면에서 출발 옆 [수정]을 눌러 실제 출발 날짜·시간으로 맞춘 뒤, 도착 정보를 입력하고 저장하세요.</p></details>
   </div></div>
   <p class="lbl" style="margin:10px 4px 0;line-height:1.6;font-size:calc(16px * var(--k))">운행 중인 차량은 "운행중" 표시가 보이며, 그 차량을 누르면 도착 화면이 열립니다.</p>
+  ${todayHtml}
   <button class="main pu" style="margin-top:14px" onclick="resOpen()">📅 운행 예약 (예약 목록·등록)</button>
   <div class="sec">차량 선택</div>
   ${CARS.length||!cfgReady?"":`<div class="empty">관리자 화면에서 차량을 등록해 주세요.</div>`}<div class="cars">${CARS.map(c=>`<button class="car" onclick="pickCar('${c.n}')"><div class="bar" style="background:${c.c}"></div>
