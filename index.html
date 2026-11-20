@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>근태관리 시스템</title>
 <link id="favicon" rel="icon" type="image/png" href="">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary:#1a3a5c; --primary-light:#2d5986; --accent:#c8a862; --accent-light:#e8d4a0;
@@ -303,6 +302,66 @@
   body.mobile .sidebar-spacer{display:none !important;}
   body.mobile .view.view-wide{max-width:none !important;}
   @media print { #boot-msg,#settings-modal,#pw-modal{display:none !important;} }
+
+  /* ===== 화면 스타일 통일 (홈 대시보드와 같은 글꼴·라이트 테마) — 인쇄 서식에는 영향 없음 ===== */
+  @media screen {
+  :root{--primary:#2f5bd6;--primary-light:#4a73e8;--accent:#2f5bd6;--accent-light:#e5e9f2;--bg:#f5f7fb;--border:#e5e9f2;--border-strong:#b8c0d0;--text:#1f2937;--text-muted:#6b7280;--success:#1f9d6b;--success-bg:#e7f7f0;--danger:#d64545;--shadow:0 1px 3px rgba(31,41,55,.04);--font:-apple-system,"Noto Sans KR","Malgun Gothic",sans-serif;}
+  body,input,select,textarea,button,.btn,.tab,.hdr-btn,.header h1,.alt-table input,.alt-table select,.hours-table input{font-family:var(--font);}
+  body{font-size:15px;}
+  .header{background:#fff;color:var(--text);border-bottom:1px solid var(--border);box-shadow:none;}
+  .header h1{font-size:1.05rem;font-weight:800;letter-spacing:0;color:var(--text);}
+  .header-badge{background:#eaf0ff;color:var(--primary);}
+  #header-name-badge{color:var(--primary)!important;background:#eaf0ff!important;border:0!important;border-radius:20px!important;}
+  .hdr-btn{background:#fff;color:#374151;border:1px solid var(--border);border-radius:10px;font-weight:600;}
+  .hdr-btn:hover{background:#f3f5fa;}
+  .sidebar{background:#fff;border-right:1px solid var(--border);padding:.8rem .6rem;}
+  .sidebar-group{color:#8a93a5;border-left:0;font-size:.72rem;letter-spacing:.04em;padding:.8rem .7rem .3rem;margin:.2rem 0 0;}
+  .sidebar-divider{border-top:1px solid var(--border);margin:.5rem .4rem .2rem;}
+  .tab{color:#374151;font-weight:600;border-radius:10px;border-left:0;padding:.6rem .8rem;margin-bottom:2px;font-size:.86rem;}
+  .tab:hover:not(.active){background:#f3f5fa;color:#111827;}
+  .tab.active,.tab.tab-alt.active,.tab.tab-leave.active{background:#eaf0ff;color:var(--primary);font-weight:700;border-left:0;}
+  .tab.tab-leave:hover:not(.active){background:#f3f5fa;color:#111827;}
+  .card{border-radius:16px;padding:1.3rem 1.5rem;}
+  .card-title{color:#1f2937;font-size:.92rem;letter-spacing:0;text-transform:none;border-bottom:1px solid var(--border);}
+  .card-title-alt{color:#8a5200;border-bottom-color:#f3dfb8;}
+  .card-alt{background:#fffaf0;border-color:#f3dfb8;}
+  input,select,textarea{border-radius:10px;padding:9px 12px;}
+  input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(47,91,214,.14);}
+  input[readonly]{background:#f5f7fb;}
+  .btn{border-radius:10px;font-weight:600;}
+  .btn-accent{background:#eaf0ff;color:var(--primary);font-weight:700;} .btn-accent:hover{background:#dbe5ff;}
+  .btn-alt{background:#fff1d6;color:#8a5200;} .btn-alt:hover{background:#ffe5b4;}
+  .btn-outline{border-color:var(--primary);} 
+  .progress-bar-fill{background:var(--primary);}
+  .progress-bar-wrap,.mini-bar{background:#eaeef6;}
+  .alert{border-radius:10px;}
+  .alert-info{background:#eaf0ff;color:#1f3a8a;border-left-color:var(--primary);}
+  .alert-warn{border-left-color:#f0b429;}
+  .hours-table th,.adm-table th{background:#f3f5fa;color:#4b5563;font-weight:700;}
+  .hours-table th:first-child,.hours-table th:last-child{border-radius:0;}
+  .adm-table thead tr.grp-row th{background:#eaf0ff;color:var(--primary);}
+  .adm-table thead .sep{border-left:1px solid var(--border);}
+  .hours-table td,.adm-table td{border-color:#edf0f6;}
+  .hours-table tr:nth-child(even) td,.adm-table tbody tr:nth-child(even) td{background:#fafbfd;}
+  .adm-table tbody tr.clickable:hover td{background:#eef3ff;} .adm-table tbody tr.selected td{background:#e2ebff;}
+  .adm-table .sep{border-left-color:#edf0f6;}
+  .alt-table th{background:#fdecc8;color:#7a4f00;} .alt-table td{border-color:#f0e3c4;}
+  .alt-table th:first-child,.alt-table th:last-child{border-radius:0;}
+  .alt-panel{border-radius:12px;} .alt-divider{color:var(--primary);}
+  .stat-box{border-radius:12px;background:#f5f8ff;border-color:#dfe7fb;}
+  .kpi{border-radius:14px;} .detail-box{border-radius:12px;}
+  .dash-row{border-radius:12px;} .dash-row:hover{background:#f5f8ff;}
+  .seg{border-radius:10px;} .seg button{font-weight:600;}
+  .row-btn{border-radius:8px;}
+  .notice-card{background:#f5f8ff;border-color:#dfe7fb;border-left-color:var(--primary);border-radius:12px;}
+  .nav-badge{background:#ffb020;color:#4a2b00;}
+  body.mobile .tab.active{border-bottom:3px solid var(--primary)!important;}
+  }
+
+  /* 홈 화면 안에 끼워 넣어 쓸 때(?embed=1): 자체 상단바·왼쪽 메뉴를 숨기고 내용만 보여 줌 */
+  html.embed .header, html.embed .sidebar, html.embed #boot-msg{display:none!important;}
+  html.embed .app-layout{min-height:100vh;}
+  html.embed body{background:var(--bg);}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 </head>
@@ -312,6 +371,7 @@
   <h1 id="header-title">근태관리 시스템</h1>
   <div style="display:flex;gap:0.5rem;align-items:center;">
     <span id="header-name-badge" style="display:none;font-size:0.78rem;color:#fff;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 10px;font-weight:600;"></span>
+    <a class="hdr-btn" href="/" style="text-decoration:none;display:inline-block">🏠 홈으로</a>
     <button id="header-mode-btn" class="hdr-btn" onclick="chooseMode()" style="display:none">🔀 화면 전환</button>
     <button id="header-logout-btn" class="hdr-btn" onclick="doLogout()" style="display:none">로그아웃</button>
   </div>
@@ -324,51 +384,51 @@
 <!-- 직원 메뉴 (선임은 맨 아래 '선임 확인' 묶음이 추가로 보임) -->
 <nav class="sidebar" id="tabs-staff" style="display:none">
   <div class="sidebar-group">📍 출퇴근</div>
-  <button class="tab" onclick="switchTab('punch')">📍 출퇴근 찍기</button>
-  <button class="tab" onclick="switchTab('attend')">📅 월별 근태현황</button>
-  <button class="tab" onclick="switchTab('trip')">🚗 출장 신청·내역</button>
+  <button class="tab" data-g="punch" onclick="switchTab('punch')">📍 출퇴근 찍기</button>
+  <button class="tab" data-g="punch" onclick="switchTab('attend')">📅 월별 근태현황</button>
+  <button class="tab" data-g="trip" onclick="switchTab('trip')">🚗 출장 신청·내역</button>
   <hr class="sidebar-divider">
   <div class="sidebar-group">🏖 근태관리</div>
-  <button class="tab tab-leave" onclick="switchTab('leave')">📊 내 근태 현황</button>
-  <button class="tab tab-leave" onclick="switchTab('leave-apply')">🗓️ 휴가 신청</button>
-  <button class="tab tab-leave" onclick="switchTab('overtime')">⏰ 시간외 신청</button>
-  <button class="tab tab-leave" onclick="switchTab('comp-apply')">🔄 대체휴무 신청</button>
-  <button class="tab tab-leave" onclick="switchTab('promo')">🗓 연가 사용 계획서</button>
-  <button class="tab tab-leave" onclick="switchTab('leavehist')">📋 내 신청 내역</button>
+  <button class="tab tab-leave" data-g="leave" onclick="switchTab('leave')">📊 내 근태 현황</button>
+  <button class="tab tab-leave" data-g="leave" onclick="switchTab('leave-apply')">🗓️ 휴가 신청</button>
+  <button class="tab tab-leave" data-g="leave" onclick="switchTab('overtime')">⏰ 시간외 신청</button>
+  <button class="tab tab-leave" data-g="leave" onclick="switchTab('comp-apply')">🔄 대체휴무 신청</button>
+  <button class="tab tab-leave" data-g="leave" onclick="switchTab('promo')">🗓 연가 사용 계획서</button>
+  <button class="tab tab-leave" data-g="leave" onclick="switchTab('leavehist')">📋 내 신청 내역</button>
   <hr class="sidebar-divider">
   <div class="sidebar-group">📋 시수</div>
-  <button class="tab" onclick="switchTab('write')">✏️ 시수 입력</button>
-  <button class="tab" onclick="switchTab('myrecord')">📑 내 시수 확인</button>
+  <button class="tab" data-g="punch" onclick="switchTab('write')">✏️ 시수 입력</button>
+  <button class="tab" data-g="punch" onclick="switchTab('myrecord')">📑 내 시수 확인</button>
   <hr class="sidebar-divider">
   <div class="sidebar-group">🔄 대체시수</div>
-  <button class="tab tab-alt" onclick="switchTab('altwrite')">📅 대체 시수 발생일</button>
-  <button class="tab tab-alt" onclick="switchTab('altuse')">✍️ 대체 시수 입력</button>
-  <button class="tab tab-alt" onclick="switchTab('altrecord')">📋 내 대체 시수 확인</button>
+  <button class="tab tab-alt" data-g="punch" onclick="switchTab('altwrite')">📅 대체 시수 발생일</button>
+  <button class="tab tab-alt" data-g="punch" onclick="switchTab('altuse')">✍️ 대체 시수 입력</button>
+  <button class="tab tab-alt" data-g="punch" onclick="switchTab('altrecord')">📋 내 대체 시수 확인</button>
   <div id="nav-senior-group" style="display:none">
     <hr class="sidebar-divider">
     <div class="sidebar-group">✅ 선임 확인</div>
-    <button class="tab tab-leave" onclick="switchTabSenior('leavemgr')">📋 신청 승인/반려 (근태)<span class="nav-badge" id="senior-pending-badge" style="display:none">0</span></button>
-    <button class="tab" onclick="switchTabSenior('dashboard')">👤 시수 신청 현황 확인</button>
-    <button class="tab tab-alt" onclick="switchTabSenior('altdashboard')">📊 대체 시수 신청 현황</button>
+    <button class="tab tab-leave" data-g="leave" onclick="switchTabSenior('leavemgr')">📋 신청 승인/반려 (근태)<span class="nav-badge" id="senior-pending-badge" style="display:none">0</span></button>
+    <button class="tab" data-g="punch" onclick="switchTabSenior('dashboard')">👤 시수 신청 현황 확인</button>
+    <button class="tab tab-alt" data-g="punch" onclick="switchTabSenior('altdashboard')">📊 대체 시수 신청 현황</button>
   </div>
 </nav>
 
 <!-- 관리자 메뉴 -->
 <nav class="sidebar" id="tabs-admin" style="display:none">
   <div class="sidebar-group">🛠 관리자</div>
-  <button class="tab" data-adm="dashboard" onclick="switchAdminTab('dashboard')">📊 대시보드</button>
-  <button class="tab" data-adm="attend" onclick="switchAdminTab('attend')">🕘 출퇴근 관리</button>
-  <button class="tab" data-adm="trip" onclick="switchAdminTab('trip')">🚗 출장 관리</button>
-  <button class="tab" data-adm="approval" onclick="switchAdminTab('approval')">📋 신청 현황<span class="nav-badge" id="adm-pending-badge" style="display:none">0</span></button>
-  <button class="tab" data-adm="annual" onclick="switchAdminTab('annual')">📅 연차 관리</button>
-  <button class="tab" data-adm="comp" onclick="switchAdminTab('comp')">🔄 대체휴무</button>
-  <button class="tab" data-adm="promo" onclick="switchAdminTab('promo')">🗓 연가 촉진</button>
-  <button class="tab" data-adm="notice" onclick="switchAdminTab('notice')">📢 공지사항</button>
+  <button class="tab" data-adm="dashboard" data-g="all" onclick="switchAdminTab('dashboard')">📊 대시보드</button>
+  <button class="tab" data-adm="attend" data-g="punch" onclick="switchAdminTab('attend')">🕘 출퇴근 관리</button>
+  <button class="tab" data-adm="trip" data-g="trip" onclick="switchAdminTab('trip')">🚗 출장 관리</button>
+  <button class="tab" data-adm="approval" data-g="leave" onclick="switchAdminTab('approval')">📋 신청 현황<span class="nav-badge" id="adm-pending-badge" style="display:none">0</span></button>
+  <button class="tab" data-adm="annual" data-g="leave" onclick="switchAdminTab('annual')">📅 연차 관리</button>
+  <button class="tab" data-adm="comp" data-g="leave" onclick="switchAdminTab('comp')">🔄 대체휴무</button>
+  <button class="tab" data-adm="promo" data-g="leave" onclick="switchAdminTab('promo')">🗓 연가 촉진</button>
+  <button class="tab" data-adm="notice" data-g="leave" onclick="switchAdminTab('notice')">📢 공지사항</button>
   <div class="sidebar-spacer"></div>
   <hr class="sidebar-divider">
   <div class="sidebar-group">⚙️ 설정</div>
-  <button class="tab" data-adm="staff" onclick="switchAdminTab('staff')">👥 직원 관리</button>
-  <button class="tab" data-adm="settings" onclick="switchAdminTab('settings')">🏢 기관 설정</button>
+  <button class="tab" data-adm="staff" data-g="all" onclick="switchAdminTab('staff')">👥 직원 관리</button>
+  <button class="tab" data-adm="settings" data-g="all" onclick="switchAdminTab('settings')">🏢 기관 설정</button>
 </nav>
 
 <div class="content-area">
@@ -579,8 +639,8 @@
             <th style="background:#8a9099;" rowspan="2">번<br>호</th>
             <th colspan="5" style="background:#9a6820;border-right:2px solid #ccc;">🕐 발생 (읽기전용)</th>
             <th style="background:#555;padding:0;" rowspan="2"></th>
-            <th colspan="4" style="background:#2d5986;">🌴 사용일시 입력</th>
-            <th style="background:#2d5986;" rowspan="2">사용<br>확인</th>
+            <th colspan="4" style="background:#4a73e8;">🌴 사용일시 입력</th>
+            <th style="background:#4a73e8;" rowspan="2">사용<br>확인</th>
           </tr>
           <tr>
             <th style="background:#b88030;">월</th>
@@ -655,11 +715,11 @@
       </div>
 
       <!-- 사용 섹션 -->
-      <div style="font-size:0.78rem;font-weight:700;color:#1a3a5c;letter-spacing:0.06em;margin-bottom:0.5rem;padding:0.4rem 0.6rem;background:#eef4fb;border-radius:5px;border-left:3px solid #2d5986;">🌴 사용 내역</div>
+      <div style="font-size:0.78rem;font-weight:700;color:#2f5bd6;letter-spacing:0.06em;margin-bottom:0.5rem;padding:0.4rem 0.6rem;background:#eef4fb;border-radius:5px;border-left:3px solid #4a73e8;">🌴 사용 내역</div>
       <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;font-size:0.82rem">
           <thead>
-            <tr style="background:#2d5986;color:white">
+            <tr style="background:#4a73e8;color:white">
               <th style="padding:6px 5px;text-align:center;">월</th>
               <th style="padding:6px 5px;text-align:center;">일</th>
               <th style="padding:6px 5px;text-align:center;">요일</th>
@@ -780,11 +840,11 @@
 
   <!-- 사용 확인 -->
   <div class="card">
-    <div style="font-size:0.78rem;font-weight:700;color:#1a3a5c;letter-spacing:0.06em;margin-bottom:0.8rem;padding:0.4rem 0.6rem;background:#eef4fb;border-radius:5px;border-left:3px solid #2d5986;">🌴 사용 선임 확인</div>
+    <div style="font-size:0.78rem;font-weight:700;color:#2f5bd6;letter-spacing:0.06em;margin-bottom:0.8rem;padding:0.4rem 0.6rem;background:#eef4fb;border-radius:5px;border-left:3px solid #4a73e8;">🌴 사용 선임 확인</div>
     <div class="table-scroll-wrap">
       <table style="width:100%;border-collapse:collapse;font-size:0.82rem">
         <thead>
-          <tr style="background:#2d5986;color:white">
+          <tr style="background:#4a73e8;color:white">
             <th style="padding:6px 5px;text-align:center;">월</th>
             <th style="padding:6px 5px;text-align:center;">일</th>
             <th style="padding:6px 5px;text-align:center;">요일</th>
@@ -1032,7 +1092,9 @@
     </div>
     <div class="page-tools no-print">
       <select id="adm-trip-year" onchange="loadAdminTrip()"></select>
+      <input type="date" id="adm-trip-from" title="시작일(비우면 전체)" style="width:auto"> ~ <input type="date" id="adm-trip-to" title="종료일(비우면 전체)" style="width:auto">
       <button class="btn btn-outline btn-sm" onclick="downloadTripLedger()">📥 출장대장 엑셀</button>
+      <button class="btn btn-outline btn-sm" onclick="saveTripLedgerGSheet()">📊 시트로 저장</button>
       <button class="btn btn-outline btn-sm" onclick="loadAdminTrip()">🔄 새로고침</button>
     </div>
   </div>
@@ -1110,6 +1172,7 @@
     <div class="page-tools no-print">
       <input type="month" id="att-ym" onchange="loadMyAttend()">
       <button class="btn btn-outline btn-sm" onclick="downloadMyAttendExcel()">📥 엑셀</button>
+      <button class="btn btn-outline btn-sm" onclick="saveMyAttendGSheet()">📊 시트로 저장</button>
       <button class="btn btn-outline btn-sm" onclick="printMyAttend()">🖨️ 인쇄</button>
     </div>
   </div>
@@ -1129,6 +1192,7 @@
       <input type="month" id="adm-att-ym" onchange="loadAdminAttend(true)">
       <select id="adm-att-name" onchange="renderAdminAttend()"></select>
       <button class="btn btn-outline btn-sm" onclick="downloadAdminAttendExcel()">📥 엑셀</button>
+      <button class="btn btn-outline btn-sm" onclick="saveAdminAttendGSheet()">📊 시트로 저장</button>
       <button class="btn btn-outline btn-sm" onclick="printAdminAttend()">🖨️ 인쇄</button>
     </div>
   </div>
@@ -1244,7 +1308,7 @@
       <button class="btn btn-accent"  id="ot-btn-end"   onclick="otTimerEnd()"   style="min-width:140px;font-size:1rem;display:none;">⏹ 종료</button>
     </div>
     <div id="ot-timer-times" style="display:none;margin-top:0.5rem;font-size:0.82rem;color:var(--text-muted);background:#f5f3ee;border-radius:6px;padding:0.6rem 0.8rem;line-height:1.8;">
-      <div id="ot-timer-start-label" style="color:#1a3a5c;"></div>
+      <div id="ot-timer-start-label" style="color:#2f5bd6;"></div>
       <div id="ot-timer-end-label" style="color:#c0392b;"></div>
     </div>
     <div style="font-size:0.75rem;color:#888;text-align:center;margin-top:0.5rem;">📍 시작/종료 버튼을 누르면 GPS 위치가 자동 기록됩니다</div>
@@ -1294,7 +1358,7 @@
 
   <!-- 주간 현황 -->
   <div class="card" id="ot-week-info" style="display:none;background:#f0f5fb;border-color:#c2d8f0;">
-    <div class="card-title" style="color:#1a3a5c;">📊 해당 주 근무 현황</div>
+    <div class="card-title" style="color:#2f5bd6;">📊 해당 주 근무 현황</div>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">
       <div class="stat-box"><div class="stat-num" id="ot-wi-standard" style="font-size:1.2rem;">-</div><div class="stat-label">기준시간</div></div>
       <div class="stat-box stat-warn"><div class="stat-num" id="ot-wi-sisu" style="font-size:1.2rem;">-</div><div class="stat-label">시수 차감</div></div>
@@ -1406,6 +1470,7 @@
       <select id="dash-year-select" onchange="loadAdminDashboard()"></select>
       <button class="btn btn-outline btn-sm" onclick="loadAdminDashboard()">🔄 새로고침</button>
       <button class="btn btn-primary btn-sm" onclick="downloadAdminExcel()">⬇ 엑셀 다운로드</button>
+      <button class="btn btn-primary btn-sm" onclick="saveReportGSheet()">📊 시트로 저장</button>
       <button class="btn btn-accent btn-sm" onclick="printAdminReport()">🖨️ 인쇄</button>
     </div>
   </div>
@@ -1782,9 +1847,9 @@
 
 <script>
 // ★★ 설치할 때 아래 두 줄만 채웁니다 (Supabase → Project Settings → API) ★★
-var SB_URL  = '';   // 예) https://abcdefgh.supabase.co
-var SB_ANON = '';   // anon(public) 키 — 화면에 들어가도 되는 키입니다. (service_role 키는 절대 넣지 마세요!)
-var APP_VERSION = '2026.11.19-2';   // 서버(index.ts)의 APP_VERSION 과 같게 유지
+var SB_URL  = 'https://uamlualqqcqmpdkprjfs.supabase.co';   // 예) https://abcdefgh.supabase.co
+var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhbWx1YWxxcWNxbXBka3ByamZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwNjE0OTMsImV4cCI6MjExMDYzNzQ5M30._f4p4pfcKaYbmjKRXOPpkMo7Ydcc26oVVI6lRFYsLkY';   // anon(public) 키 — 화면에 들어가도 되는 키입니다. (service_role 키는 절대 넣지 마세요!)
+var APP_VERSION = '2026.11.19-3';   // 서버(index.ts)의 APP_VERSION 과 같게 유지
 // ===== 직원 데이터 (시트에서 동적 로드) =====
 let STAFF = [];
 let APPROVAL_CONFIG = [];
@@ -1939,7 +2004,42 @@ function init(cb) {
 }
 
 // 왼쪽 메뉴: 직원용 / 관리자용 중 하나만 표시 (id가 없으면 모두 숨김)
+// ── 화면 묶음: 홈 메뉴에서 ?m=leave(휴가 관리) / ?m=trip(출장 관리) / ?m=punch(출퇴근·시수)로 들어오면 그 묶음 메뉴만 보임. 없으면 전체 ──
+var EMBED = false, EMBED_GO = '', EMBED_MODE = '';
+try {
+  var _q = new URLSearchParams(location.search);
+  if (_q.get('embed') === '1') { EMBED = true; EMBED_GO = _q.get('go') || ''; EMBED_MODE = _q.get('mode') === 'admin' ? 'admin' : 'staff'; document.documentElement.classList.add('embed'); }
+} catch(e) {}
+var NAV_MODE = (function(){
+  var m = '';
+  if (EMBED) return '';
+  try {
+    m = (new URLSearchParams(location.search).get('m') || '').toLowerCase();
+    if (m === 'admin') { sessionStorage.setItem('att_mode', 'admin'); sessionStorage.removeItem('att_nav_mode'); return ''; }   // 홈 '시스템 관리'에서 들어옴 → 관리자 화면
+    if (['leave','trip','punch'].indexOf(m) >= 0) { sessionStorage.setItem('att_nav_mode', m); sessionStorage.setItem('att_mode', 'staff'); }   // 홈 업무 메뉴에서 들어옴 → 직원 화면
+    else { m = sessionStorage.getItem('att_nav_mode') || ''; if (['leave','trip','punch'].indexOf(m) < 0) m = ''; }
+  } catch(e) { m = ''; }
+  return m;
+})();
+var NAV_NAMES = { leave: '휴가 관리', trip: '출장 관리', punch: '출퇴근·시수' };
+function applyNavMode() {
+  ['tabs-staff','tabs-admin'].forEach(function(id){
+    var nav = document.getElementById(id); if (!nav) return;
+    var label = null, any = false;
+    function closeLabel(){ if (label) label.style.display = (!NAV_MODE || any) ? '' : 'none'; }
+    nav.querySelectorAll('.sidebar-group, .tab, hr.sidebar-divider').forEach(function(el){
+      if (el.classList.contains('sidebar-group')) { closeLabel(); label = el; any = false; return; }
+      if (el.tagName === 'HR') { el.style.display = NAV_MODE ? 'none' : ''; return; }
+      var g = el.getAttribute('data-g') || 'all';
+      var show = !NAV_MODE || g === 'all' || g === NAV_MODE;
+      el.style.display = show ? '' : 'none';
+      if (show) any = true;
+    });
+    closeLabel();
+  });
+}
 function showSidebar(id) {
+  applyNavMode();
   ['tabs-staff','tabs-admin'].forEach(function(sid){
     document.getElementById(sid).style.display = (sid===id) ? 'flex' : 'none';
   });
@@ -2580,7 +2680,7 @@ function updateBadge(count) {
   try {
     var canvas=document.createElement('canvas'); canvas.width=32; canvas.height=32;
     var ctx=canvas.getContext('2d');
-    ctx.fillStyle='#1a3a5c'; ctx.beginPath(); ctx.arc(16,16,15,0,2*Math.PI); ctx.fill();
+    ctx.fillStyle='#2f5bd6'; ctx.beginPath(); ctx.arc(16,16,15,0,2*Math.PI); ctx.fill();
     if (count>0) {
       ctx.fillStyle='#e74c3c'; ctx.beginPath(); ctx.arc(24,8,9,0,2*Math.PI); ctx.fill();
       ctx.fillStyle='white'; ctx.font='bold 11px Arial'; ctx.textAlign='center'; ctx.textBaseline='middle';
@@ -3051,7 +3151,7 @@ function printAltUse() {
             '<th rowspan="2" style="width:7mm">번호</th>' +
             '<th colspan="5" style="background:#9a6820;border-right:2px solid #ccc;">🕐 발생 (확인완료)</th>' +
             '<th rowspan="2" style="background:#666;width:4mm;padding:0;"></th>' +
-            '<th colspan="4" style="background:#2d5986;">🌴 사용일시</th>' +
+            '<th colspan="4" style="background:#4a73e8;">🌴 사용일시</th>' +
             '<th rowspan="2" style="width:12mm">사용확인</th>' +
           '</tr>' +
           '<tr>' +
@@ -3456,7 +3556,7 @@ function applyOrgName(name) {
   if (!name) return;
   window._orgName = name;
   var el = document.getElementById('login-org-name'); if (el) el.textContent = name;
-  var h1 = document.getElementById('header-title');   if (h1) h1.textContent = name + ' 근태관리';
+  var h1 = document.getElementById('header-title');   if (h1) h1.textContent = name + ' ' + (NAV_NAMES[NAV_MODE] || '근태관리');
   document.title = name + ' 근태관리';
 }
 function refreshOrgName() {
@@ -3503,9 +3603,10 @@ function afterLogin() {
     if (res.orgName) applyOrgName(res.orgName);
     var canStaff = !!res.staff, canAdmin = !!res.isAdmin, mode = '';
     try { mode = sessionStorage.getItem('att_mode') || ''; } catch(e) {}
+    if (EMBED) mode = EMBED_MODE;
     if (mode === 'admin' && canAdmin) { enterAdmin(); return; }
     if (mode === 'staff' && canStaff) { enterUser(res.staff); return; }
-    if (canAdmin && canStaff) { showModeChooser(); return; }
+    if (canAdmin && canStaff) { pickMode('staff'); return; }
     if (canAdmin) { pickMode('admin'); return; }
     if (canStaff) { pickMode('staff'); return; }
     showLeaveLoginView('직원목록에서 이 구글 계정(' + esc(res.email) + ')을 찾을 수 없습니다. 지회 담당자에게 문의하세요.', true);
@@ -3517,13 +3618,13 @@ function showModeChooser() {
   var b = document.getElementById('mode-staff-btn'); if (b && ME && ME.staff) b.textContent = '👤 직원으로 들어가기 (' + ME.staff.name + ')';
 }
 function pickMode(m) {
-  try { sessionStorage.setItem('att_mode', m); } catch(e) {}
+  if (!EMBED) { try { sessionStorage.setItem('att_mode', m); } catch(e) {} }
   if (m === 'admin') enterAdmin(); else enterUser(ME.staff);
 }
 function chooseMode() { try { sessionStorage.removeItem('att_mode'); } catch(e) {} location.reload(); }
 function updateModeBtn() {
   var mb = document.getElementById('header-mode-btn');
-  if (mb) mb.style.display = (ME && ME.isAdmin && ME.staff) ? '' : 'none';
+  if (mb) mb.style.display = 'none';   // 화면 전환은 업무 시스템 홈 메뉴에서 합니다
 }
 
 // 직원 모드 진입 (로그인 직후 / 새로고침 후 자동 복원)
@@ -3538,8 +3639,11 @@ function enterUser(res) {
   updateModeBtn();
   setLeaveUserBadge(res.name + (isSenior ? ' (선임)' : ''));
   refreshOrgName();
-  showView('leave');
-  loadLeaveDashboard();
+  if (EMBED && EMBED_GO) embedGo(EMBED_GO);
+  else if (NAV_MODE === 'trip') switchTab('trip');
+  else if (NAV_MODE === 'punch') switchTab('punch');
+  else { showView('leave'); loadLeaveDashboard(); }
+  embedPost({ type: 'att-ready' });
   if (isSenior) refreshSeniorBadge();
   // 시수 화면용 정보는 뒤에서 조용히 준비
   init(function(){ if (isSenior) startAutoRefresh(); });
@@ -3567,8 +3671,23 @@ function enterAdmin() {
   setHeaderName('관리자');
   updateModeBtn();
   refreshOrgName();
-  switchAdminTab('dashboard');
+  if (EMBED && EMBED_GO) embedGo(EMBED_GO); else switchAdminTab(NAV_MODE==='trip' ? 'trip' : NAV_MODE==='punch' ? 'attend' : NAV_MODE==='leave' ? 'approval' : 'dashboard');
+  embedPost({ type: 'att-ready' });
 }
+
+// ── 홈 화면에 끼워 쓸 때: 홈의 메뉴 클릭(postMessage)으로 화면 이동 ──
+function embedGo(tab) {
+  if (!tab) return;
+  if (leaveIsAdmin) { switchAdminTab(tab); return; }
+  if (!leaveUser) return;
+  if (tab.indexOf('senior:') === 0) switchTabSenior(tab.slice(7)); else switchTab(tab);
+}
+function embedPost(msg) { if (EMBED && window.parent !== window) { try { window.parent.postMessage(msg, location.origin); } catch(e) {} } }
+window.addEventListener('message', function(e) {
+  if (!EMBED || e.origin !== location.origin) return;
+  var d = e.data || {};
+  if (d.type === 'att-go') { EMBED_GO = d.tab; embedGo(d.tab); }
+});
 
 function doLogout() {
   if (!confirm('로그아웃 하시겠습니까?')) return;
@@ -3945,7 +4064,7 @@ function otTimerStart() {
     document.getElementById('ot-timer-status').style.color = '#10b981';
     var startTimeStr = otTimerStartTime.toTimeString().slice(0,5);
     var gpsHtml = gps
-      ? ' · <a href="' + otGpsMapUrl(gps) + '" target="_blank" style="color:#1a3a5c;text-decoration:underline;">' + otGpsLabel(gps) + '</a>'
+      ? ' · <a href="' + otGpsMapUrl(gps) + '" target="_blank" style="color:#2f5bd6;text-decoration:underline;">' + otGpsLabel(gps) + '</a>'
       : ' · <span style="color:#c0392b;">위치 미수집</span>';
     document.getElementById('ot-timer-start-label').innerHTML = '🟢 시작 ' + startTimeStr + gpsHtml;
     document.getElementById('ot-timer-times').style.display = '';
@@ -3976,7 +4095,7 @@ function otTimerEnd() {
     document.getElementById('ot-btn-end').style.display = 'none';
     document.getElementById('ot-timer-times').style.display = '';
     var gpsStartHtml = otGpsStart
-      ? ' · <a href="' + otGpsMapUrl(otGpsStart) + '" target="_blank" style="color:#1a3a5c;text-decoration:underline;">' + otGpsLabel(otGpsStart) + '</a>'
+      ? ' · <a href="' + otGpsMapUrl(otGpsStart) + '" target="_blank" style="color:#2f5bd6;text-decoration:underline;">' + otGpsLabel(otGpsStart) + '</a>'
       : ' · <span style="color:#c0392b;">위치 미수집</span>';
     var gpsEndHtml = gps
       ? ' · <a href="' + otGpsMapUrl(gps) + '" target="_blank" style="color:#c0392b;text-decoration:underline;">' + otGpsLabel(gps) + '</a>'
@@ -5208,17 +5327,64 @@ function loadTripUnappliedMgr(boxId) {
 }
 
 // ----- 출장대장 엑셀 (관리자) -----
-function downloadTripLedger() {
-  var list = admTripData.slice().reverse();
-  if (!list.length) { alert('내보낼 출장 신청이 없습니다.'); return; }
+function tripLedgerSheets() {
+  var from = (document.getElementById('adm-trip-from') || {}).value || '';
+  var to = (document.getElementById('adm-trip-to') || {}).value || '';
+  var list = admTripData.slice().reverse().filter(function(it) {
+    if (from && String(it.start) < from) return false;
+    if (to && String(it.start) > to) return false;
+    return true;
+  });
+  if (!list.length) { alert('내보낼 출장 신청이 없습니다.'); return null; }
   var rows = [['문서번호', '신청일', '출장인', '부서', '직위', '동행자', '출장 시작', '출장 종료', '일수', '출장지', '출장목적', '교통편', '지급출처', '상태', '승인자', '복명서 제출일', '교통비', '식비', '일비', '숙박비', '합계', '편도요금']];
   list.forEach(function(it) {
     var r = it.rep;
     rows.push([it.docNo, it.date, it.name, it.dept, it.position, it.passengers.join(', '), it.start, it.end, it.days, it.to, it.purpose, it.transport, it.payment, it.status, it.approver,
       r ? r.submitDate : '', r ? r.tTransport : '', r ? r.tMeal : '', r ? r.tDaily : '', r ? r.tLodging : '', r ? r.total : '', r ? r.fare : '']);
   });
+  return [{ name: '출장대장', rows: rows, widths: [14, 11, 9, 10, 8, 16, 11, 11, 5, 22, 28, 10, 14, 9, 9, 12, 9, 9, 9, 9, 10, 14] }];
+}
+function _tripLabel() {
   var y = document.getElementById('adm-trip-year').value;
-  saveBlobAs(buildXlsxBlob([{ name: '출장대장', rows: rows, widths: [14, 11, 9, 10, 8, 16, 11, 11, 5, 22, 28, 10, 14, 9, 9, 12, 9, 9, 9, 9, 10, 14] }]), (window._orgName || '') + '_' + y + '_출장대장.xlsx');
+  var from = (document.getElementById('adm-trip-from') || {}).value || '', to = (document.getElementById('adm-trip-to') || {}).value || '';
+  return from || to ? (from || y + '-01-01') + '~' + (to || y + '-12-31') : y + '년';
+}
+function downloadTripLedger() {
+  var sh = tripLedgerSheets(); if (!sh) return;
+  saveBlobAs(buildXlsxBlob(sh), (window._orgName || '') + '_' + _tripLabel() + '_출장대장.xlsx');
+}
+function saveTripLedgerGSheet() {
+  var sh = tripLedgerSheets(); if (!sh) return;
+  gsheetSave('출장대장', (window._orgName || '') + ' 출장대장 ' + _tripLabel(), sh);
+}
+
+// ===== 구글 시트로 저장 (지회 구글 드라이브) =====
+var GD_URL = SB_URL + '/functions/v1/gdrive';
+function gsheetNote(html, bad) {
+  var el = document.getElementById('gsheet-note');
+  if (!el) {
+    el = document.createElement('div'); el.id = 'gsheet-note';
+    el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;max-width:92vw;padding:12px 16px;border-radius:10px;font-size:14px;box-shadow:0 4px 18px rgba(0,0,0,.25);color:#fff';
+    document.body.appendChild(el);
+  }
+  el.style.background = bad ? '#c0392b' : '#1f7a4d';
+  el.innerHTML = html + ' <a href="#" onclick="this.parentNode.remove();return false" style="color:#fff;margin-left:10px">닫기</a>';
+  clearTimeout(gsheetNote.h); gsheetNote.h = setTimeout(function() { if (el.parentNode) el.remove(); }, bad ? 9000 : 20000);
+}
+function gsheetCall(body, cb) {
+  authToken().then(function(tok) {
+    if (!tok) { onAuthLost(); return cb({ ok: false, msg: '로그인이 필요합니다.' }); }
+    return fetch(GD_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tok, 'apikey': SB_ANON }, body: JSON.stringify(body) })
+      .then(function(r) { return r.text().then(function(t) { var j = null; try { j = JSON.parse(t); } catch (e) {} if (!j) j = { ok: false, msg: r.status === 404 ? '구글 드라이브 기능이 아직 서버에 설치되지 않았습니다. (함수 gdrive)' : '응답을 읽을 수 없습니다.' }; cb(j); }); });
+  }).catch(function(e) { cb({ ok: false, msg: (e && e.message) || '오류' }); });
+}
+function gsheetSave(kind, title, sheets) {
+  gsheetNote('📊 구글 시트로 저장하는 중... (잠시만 기다려 주세요)');
+  gsheetCall({ action: 'saveSheet', kind: kind, title: title, sheets: sheets }, function(r) {
+    if (r && r.ok) gsheetNote('✅ 구글 드라이브에 저장했습니다. <a href="' + r.url + '" target="_blank" rel="noopener" style="color:#fff;font-weight:700;text-decoration:underline">시트 열기 ↗</a>');
+    else if (r && r.code === 'not_connected') gsheetNote('📂 우리 지회 구글 드라이브가 아직 연결되지 않았습니다. 지금은 엑셀로 받아 주세요. (연결: 홈 → 시스템 관리 → 드라이브 연결)', true);
+    else gsheetNote((r && r.msg) || '저장하지 못했습니다.', true);
+  });
 }
 
 // ============================================================
@@ -5688,6 +5854,7 @@ function renderPunchStatus(t) {
   setPunchBusy(false);
   var dis = function(id, off) { var b = document.getElementById(id); if (b) { b.disabled = off || punchState.busy; b.style.opacity = b.disabled ? '0.45' : '1'; } };
   dis('pc-btn-in', !!t.in); dis('pc-btn-out', !!t.out); dis('pc-btn-trip', !!t.trip);
+  embedPost({ type: 'att-punch', today: t });
 }
 function setPunchBusy(on) {
   punchState.busy = on;
@@ -5848,6 +6015,21 @@ function attendXlsxAll(months) {
 function saveBlobAs(blob, filename) {
   var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
   document.body.appendChild(a); a.click(); setTimeout(function() { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+function saveMyAttendGSheet() {
+  if (!myAttendData) return;
+  var m = myAttendData.month;
+  gsheetSave('월별근태', (myAttendData.orgName || '') + ' ' + m.name + ' ' + m.ym + ' 근태현황', [attendXlsxSheet(m)]);
+}
+function saveAdminAttendGSheet() {
+  var t = _admAttTargets(); if (!t.length) return;
+  var ym = document.getElementById('adm-att-ym').value;
+  gsheetSave('월별근태', (admAttOrg || '') + ' ' + (t.length === 1 ? t[0].name + ' ' : '전체 ') + ym + ' 근태현황', t.length === 1 ? [attendXlsxSheet(t[0])] : attendXlsxAll(t));
+}
+function saveReportGSheet() {
+  _loadReportData(function(dash, promo) {
+    gsheetSave('연차현황', (dash.orgName || '근태') + ' ' + dash.year + '년 연차·근태현황', buildAdminReportSheets(dash, promo));
+  });
 }
 function printAttendMonths(months, orgName) {
   if (!months || !months.length) { alert('출력할 내용이 없습니다.'); return; }
